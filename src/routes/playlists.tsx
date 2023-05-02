@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { PlaylistItem } from "../components/playlist-item";
 
 import { Playlist } from '../interfaces/playlist';
+import { Selection } from "../interfaces/video";
 import { AddPlaylistModal } from "../components/addPlaylistModal";
 
 export function Playlists() {
@@ -20,12 +21,12 @@ export function Playlists() {
 
   const handleClose = () => setShowAddPlaylistModal(false)
   
-  const handleAddPlaylist = (name: string, description: string) => {
+  const handleAddPlaylist = (name: string, description: string, selections: Array<Selection["value"]>) => {
     setPlaylists([...playlists, {
       "name": name,
       "description": description,
       "id": playlists.length ? playlists[playlists.length-1].id + 1 : 1,
-      "videoIds": [],
+      "videoIds": selections,
       "dateCreated": (new Date()).toString()
     }])
     handleClose();

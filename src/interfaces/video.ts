@@ -6,3 +6,8 @@ export interface Video {
   dateCreated: string;
   thumbnail: string;
 }
+
+export interface Selection {
+  label: Video["name"],
+  value: Video["id"],
+}
